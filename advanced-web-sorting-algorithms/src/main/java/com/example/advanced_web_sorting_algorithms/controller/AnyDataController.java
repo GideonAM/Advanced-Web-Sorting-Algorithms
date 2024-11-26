@@ -1,9 +1,11 @@
 package com.example.advanced_web_sorting_algorithms.controller;
 
 import com.example.advanced_web_sorting_algorithms.dto.AnyDataDto;
+import com.example.advanced_web_sorting_algorithms.entity.AnyData;
 import com.example.advanced_web_sorting_algorithms.service.AnyDataService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +35,7 @@ public class AnyDataController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AnyDataDto>> getAllData() {
+    public ResponseEntity<List<EntityModel<AnyData>>> getAllData() {
         return ResponseEntity.ok(anyDataService.getAllData());
     }
 

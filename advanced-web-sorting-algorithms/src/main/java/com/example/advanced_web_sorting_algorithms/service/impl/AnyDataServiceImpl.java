@@ -2,10 +2,12 @@ package com.example.advanced_web_sorting_algorithms.service.impl;
 
 import com.example.advanced_web_sorting_algorithms.dto.AnyDataDto;
 import com.example.advanced_web_sorting_algorithms.entity.AnyData;
+import com.example.advanced_web_sorting_algorithms.hateos.AnyDataAssembler;
 import com.example.advanced_web_sorting_algorithms.repository.AnyDataRepository;
 import com.example.advanced_web_sorting_algorithms.service.AnyDataService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
 public class AnyDataServiceImpl implements AnyDataService {
 
     private final AnyDataRepository anyDataRepository;
+    private final AnyDataAssembler anyDataAssembler;
 
     @Override
     public String saveData(AnyDataDto anyDataDto) {
@@ -44,10 +47,10 @@ public class AnyDataServiceImpl implements AnyDataService {
     }
 
     @Override
-    public List<AnyDataDto> getAllData() {
+    public List<EntityModel<AnyData>> getAllData() {
         return anyDataRepository.findAll()
                 .stream()
-                .map(data -> new AnyDataDto(data.getData(), data.getId()))
+                .map(anyDataAssembler::toModel)
                 .toList();
     }
 }

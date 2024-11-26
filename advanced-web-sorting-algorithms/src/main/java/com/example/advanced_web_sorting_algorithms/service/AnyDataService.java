@@ -1,7 +1,9 @@
 package com.example.advanced_web_sorting_algorithms.service;
 
 import com.example.advanced_web_sorting_algorithms.dto.AnyDataDto;
+import com.example.advanced_web_sorting_algorithms.entity.AnyData;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
 
 import java.util.List;
 
@@ -12,5 +14,5 @@ public interface AnyDataService {
 
     String updateData(Integer id, AnyDataDto anyDataDto);
 
-    List<AnyDataDto> getAllData();
+    List<EntityModel<AnyData>> getAllData();
 }
