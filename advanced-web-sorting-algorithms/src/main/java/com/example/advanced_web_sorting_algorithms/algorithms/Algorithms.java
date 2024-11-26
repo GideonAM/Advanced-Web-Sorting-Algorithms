@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Algorithms {
-    public static void radixSort(int [] array, int radix, int width){
+    public static int[] radixSort(int [] array, int radix, int width){
         for (int i = 0; i < width; i++){
             radixSingleSort(array, i, radix);
         }
+
+        return array;
     }
 
     private static void radixSingleSort(int [] array, int position, int radix){
@@ -35,9 +37,9 @@ public class Algorithms {
         return value / (int) Math.pow(10, position) % radix;
     }
 
-    public static void mergeSort(int [] array){
+    public static int[] mergeSort(int [] array){
         int length = array.length;
-        if(length <= 1) return;
+        if(length <= 1) return new int[0];
         int middle = length / 2;
         int [] leftArray = new int[middle];
         int [] rightArray = new int[length - middle];
@@ -56,6 +58,8 @@ public class Algorithms {
         mergeSort(leftArray);
         mergeSort(rightArray);
         merge(leftArray, rightArray, array);
+
+        return array;
     }
 
     private static void merge(int [] leftArray, int [] rightArray, int [] array){
@@ -87,12 +91,14 @@ public class Algorithms {
         }
     }
 
-    public static void quickSort(int [] array, int start, int end){
+    public static int[] quickSort(int [] array, int start, int end){
 
-        if (end < start) return;
+        if (end < start) return new int[0];
         int pivot = partition(array, start, end);
         quickSort(array, start, pivot - 1);
         quickSort(array, pivot + 1, end);
+
+        return array;
     }
 
     private static int partition(int [] array, int start, int end){
@@ -116,8 +122,7 @@ public class Algorithms {
         return i;
     }
 
-    public void heapSort(int[] arr)
-    {
+    public static int[] heapSort(int[] arr) {
         int n = arr.length;
 
         for (int i = n / 2 - 1; i >= 0; i--)
@@ -130,9 +135,11 @@ public class Algorithms {
 
             heapify(arr, i, 0);
         }
+
+        return arr;
     }
 
-    private void heapify(int[] arr, int n, int i) {
+    private static void heapify(int[] arr, int n, int i) {
         int largest = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
@@ -152,16 +159,16 @@ public class Algorithms {
         }
     }
 
-    public static void bucketSort(int[] arr) {
+    public static float[] bucketSort(float[] arr) {
         int n = arr.length;
 
-        List<Integer>[] buckets = new ArrayList[n];
+        List<Float>[] buckets = new ArrayList[n];
         for (int i = 0; i < n; i++) {
             buckets[i] = new ArrayList<>();
         }
 
         for (int i = 0; i < n; i++) {
-            int bi = (n * arr[i]);
+            int bi = (int) (n * arr[i]);
             buckets[bi].add(arr[i]);
         }
 
@@ -175,11 +182,13 @@ public class Algorithms {
                 arr[index++] = buckets[i].get(j);
             }
         }
+
+        return arr;
     }
 
-    public static void insertionSort(List<Integer> bucket) {
+    public static void insertionSort(List<Float> bucket) {
         for (int i = 1; i < bucket.size(); ++i) {
-            int key = bucket.get(i);
+            float key = bucket.get(i);
             int j = i - 1;
             while (j >= 0 && bucket.get(j) > key) {
                 bucket.set(j + 1, bucket.get(j));
