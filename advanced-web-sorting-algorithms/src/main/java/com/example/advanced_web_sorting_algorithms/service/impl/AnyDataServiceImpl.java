@@ -28,7 +28,8 @@ public class AnyDataServiceImpl implements AnyDataService {
 
     @Override
     public String deleteData(Integer id) {
-        anyDataRepository.findById(id).ifPresent(anyDataRepository::delete);
+        AnyData data = anyDataRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Data not found for deletion"));
+        anyDataRepository.delete(data);
         return "Data deleted successfully";
     }
 
