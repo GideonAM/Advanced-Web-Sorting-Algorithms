@@ -35,7 +35,7 @@ public class AnyDataServiceImpl implements AnyDataService {
     @Override
     public String updateData(Integer id, AnyDataDto anyDataDto) {
         AnyData data = anyDataRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Data not found for deletion"));
+                .orElseThrow(() -> new EntityNotFoundException("Data not found to be updated"));
         data.setData(anyDataDto.data());
         anyDataRepository.save(data);
 
