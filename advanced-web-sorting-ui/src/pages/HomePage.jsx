@@ -21,7 +21,7 @@ export const HomePage = () => {
               Welcome
             </Text>
             <Text size={smallTextSize} fw={300}>
-              to the File Server
+              to the Advanced We Sorting Algorithms
             </Text>
             <Link to={"/login"}>
               <Button
