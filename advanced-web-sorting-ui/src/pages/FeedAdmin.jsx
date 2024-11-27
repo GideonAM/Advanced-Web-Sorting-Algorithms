@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import WebSortAlgorithms from "../service/WebSortAlgorithms";
 import {
-  ActionIcon,
   Box,
   Button,
   Container,
@@ -10,18 +9,9 @@ import {
   Skeleton,
   Table,
   Text,
-  TextInput,
   Modal,
-  rem,
 } from "@mantine/core";
-import {
-  IconArrowRight,
-  IconCloudUpload,
-  IconEdit,
-  IconSearch,
-  IconShare3,
-  IconTrash,
-} from "@tabler/icons-react";
+import { IconCloudUpload, IconEdit, IconTrash } from "@tabler/icons-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const FeedAdmin = ({ user, dispatchUser }) => {
@@ -54,11 +44,6 @@ const FeedAdmin = ({ user, dispatchUser }) => {
     }
   };
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setSearch({ ...search, [e.target.name]: value });
-  };
-
   const handleDeleteFile = async (file) => {
     setFileName(file);
     setNoTransitionOpened(true);
@@ -66,7 +51,7 @@ const FeedAdmin = ({ user, dispatchUser }) => {
 
   const logout = async (e) => {
     e.preventDefault();
-    FileServerEndpoints.logout(user)
+    WebSortAlgorithms.logout(user)
       .then((response) => {
         dispatchUser({ type: "clear-session", payload: response.data });
         alert(response.data);

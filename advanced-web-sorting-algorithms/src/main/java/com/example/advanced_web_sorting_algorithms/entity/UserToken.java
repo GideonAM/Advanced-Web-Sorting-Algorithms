@@ -1,9 +1,6 @@
 package com.example.advanced_web_sorting_algorithms.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,6 +19,7 @@ public class UserToken {
     @Column(nullable = false)
     private String token;
 
-    @Column(nullable = false)
-    private User _user;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User userData;
 }

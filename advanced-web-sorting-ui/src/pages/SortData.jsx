@@ -100,14 +100,15 @@ const SortData = ({ user }) => {
               <Input
                 onChange={(e) => handleChange(e)}
                 placeholder="numbers to sort"
-                name="data"
-                value={fileBody.data}
+                name="sortData"
+                value={fileBody?.sortData}
               />
             </div>
             <div>
               <select
-                value={setSelectedAlgorithm}
-                onChange={handleSelectChange}
+                value={selectedAlgorithm}
+                onChange={(e) => handleChange(e)}
+                name="algorithm"
               >
                 <option value="">Select an algorithm to use</option>
                 {data.map((algorithm) => (

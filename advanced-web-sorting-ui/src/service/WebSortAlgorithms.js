@@ -70,6 +70,18 @@ class WebSortAlgorithms {
     );
   }
 
+  logout(user) {
+    return axios.put(
+      ADVANCED_WEB_SORTING_ALGORITHM_BASE_URL + "/logout",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${user.jwt}`,
+        },
+      }
+    );
+  }
+
   updateData(updateDataContent, user) {
     return axios.put(
       ADVANCED_WEB_SORTING_ALGORITHM_BASE_URL +

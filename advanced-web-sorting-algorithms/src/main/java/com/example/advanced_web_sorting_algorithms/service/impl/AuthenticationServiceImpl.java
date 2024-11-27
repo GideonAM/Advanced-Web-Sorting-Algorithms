@@ -45,7 +45,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         var token = jwtService.generateToken(authenticationDto.email());
 
         UserToken userToken = UserToken.builder()
-                ._user(user)
+                .userData(user)
                 .token(token)
                 .build();
         userTokenRepository.save(userToken);
