@@ -18,18 +18,20 @@ public class AlgorithmsServiceImpl implements AlgorithmsService {
 
         if (allAlgorithms.contains(sortDataDto.algorithm())) {
 
-            try {
-                if (sortDataDto.algorithm().equals("BUCKET_SORT")) {
+            if (sortDataDto.algorithm().equals("BUCKET_SORT")) {
+                try {
                     Float[] floatArray = convertInputDataToFloatArray(sortDataDto.sortData());
                     return sortFloat(floatArray);
+                } catch (Exception exception) {
+                    throw new RuntimeException("Float digits should be used for bucket sort algorithm");
                 }
+            }
 
+            try {
                 int[] intArray = convertInputDataToIntArray(sortDataDto.sortData());
                 var selectedAlgorithm = sortDataDto.algorithm();
 
                 return sortedIntArray(intArray, selectedAlgorithm);
-            } catch (NumberFormatException exception) {
-                throw new RuntimeException("Float digits should be used for bucket sort algorithm only");
             } catch (Exception exception) {
                 throw new RuntimeException("Input data should be whole numbers only and should be separated by single space");
             }
