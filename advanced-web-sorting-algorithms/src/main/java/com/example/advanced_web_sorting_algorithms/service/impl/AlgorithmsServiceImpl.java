@@ -88,12 +88,13 @@ public class AlgorithmsServiceImpl implements AlgorithmsService {
     private int[] sortInt(String algorithm, int[] array) {
         int[] result;
         int max = Arrays.stream(array).max().orElse(1);
+        var width = String.valueOf(max).length();
 
         result = switch (algorithm.toLowerCase()) {
             case "heap_sort" -> Algorithms.heapSort(array);
             case "quick_sort" -> Algorithms.quickSort(array, 0, array.length - 1);
             case "merge_sort" -> Algorithms.mergeSort(array);
-            case "radix_sort" -> Algorithms.radixSort(array, 10, max);
+            case "radix_sort" -> Algorithms.radixSort(array, 10, width);
             default -> new int[0];
         };
 
