@@ -65,7 +65,7 @@ class AuthenticationServiceImplTest {
     void login() {
         String token = "jwt";
         UserToken userToken = UserToken.builder()
-                ._user(user)
+                .userData(user)
                 .token(token)
                 .build();
 
