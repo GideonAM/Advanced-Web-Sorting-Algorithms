@@ -23,7 +23,7 @@ public class AlgorithmsServiceImpl implements AlgorithmsService {
                     Float[] floatArray = convertInputDataToFloatArray(sortDataDto.sortData());
                     return sortFloat(floatArray);
                 } catch (Exception exception) {
-                    throw new RuntimeException("Float digits should be used for bucket sort algorithm");
+                    throw new RuntimeException("Float digits with single spacing should be used for bucket sort algorithm");
                 }
             }
 
