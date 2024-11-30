@@ -1,4 +1,4 @@
-package com.example.advanced_web_sorting_algorithms.hateos;
+package com.example.advanced_web_sorting_algorithms.hateoas;
 
 import com.example.advanced_web_sorting_algorithms.entity.AnyData;
 import org.springframework.hateoas.EntityModel;

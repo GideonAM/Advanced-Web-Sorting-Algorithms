@@ -2,7 +2,7 @@ package com.example.advanced_web_sorting_algorithms.service.impl;
 
 import com.example.advanced_web_sorting_algorithms.dto.AnyDataDto;
 import com.example.advanced_web_sorting_algorithms.entity.AnyData;
-import com.example.advanced_web_sorting_algorithms.hateos.AnyDataAssembler;
+import com.example.advanced_web_sorting_algorithms.hateoas.AnyDataAssembler;
 import com.example.advanced_web_sorting_algorithms.repository.AnyDataRepository;
 import com.example.advanced_web_sorting_algorithms.service.AnyDataService;
 import jakarta.persistence.EntityNotFoundException;
